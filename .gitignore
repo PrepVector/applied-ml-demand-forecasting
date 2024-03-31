@@ -1,0 +1,49 @@
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+env/
+*.env
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore logs and temporary files
+logs/*
+*.log
+*.temp
+
+models/**/base.pt
+
+# Ignore data files and large binaries
+*.mp3
+*.flac
+*.wav
+*.tar.gz
+
+# Ignore generated files
+generated/
+
+# Ignore model files (if generated during runtime)
+.idea/
+__pycache__/
+
+# Ignore system-specific files
+.DS_StoreF
+.DS_Store
+Thumbs.db
+
+# Ignore any sensitive or private information
+config.ini
+secrets.yml
+
+models/*.pt
+models/*/*.pt
+
+logs
+*.log
