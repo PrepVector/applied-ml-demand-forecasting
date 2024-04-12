@@ -1,6 +1,6 @@
 import pickle
 from src.logger import ProjectLogger
-
+from prophet import Prophet
 
 class ModelLoader:
     logger = ProjectLogger().get_logger()

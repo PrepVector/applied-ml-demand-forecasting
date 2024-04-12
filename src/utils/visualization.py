@@ -82,7 +82,7 @@ class Visualizer:
             # Plot forecasted values with orange color
             fig.add_trace(
                 go.Scatter(
-                    x=test_pred.index,
+                    x=test_data.index,
                     y=test_pred,
                     mode="lines",
                     name="Test - Prediction",

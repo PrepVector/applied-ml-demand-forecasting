@@ -174,10 +174,22 @@ energy_forecast = """ <h2 style="color:#a2d2fb">Energy Demand Forecasting</h2> "
 st.markdown(energy_forecast, unsafe_allow_html=True)
 
 # model location
-model_path = "models/holt_winter_model.pkl"
+holt_winter_model_path = "models/holt_winter_model.pkl"
+prophet_model_path = 'models/prophet_model.pkl'
 
-# model obj
-model = ModelLoader().load_model(model_path)
+# adding dropdown to select model
+drop_down_col, _ = st.columns(2)
+
+with drop_down_col:
+    model_name= st.selectbox("Select Model",["Holt-Winter","Prophet"],index=0)
+
+
+if model_name == "Prophet":
+    # model obj
+    model = ModelLoader().load_model(prophet_model_path)
+else:
+    model = ModelLoader().load_model(holt_winter_model_path)
+
 
 
 # inferecning obj
@@ -185,7 +197,9 @@ inference_obj = ModelInference(model)
 
 # loading test_data & plotting forecasting for test data
 test_data = get_data("data/processed/test_data.csv")
-test_data_pred = inference_obj.test_data_prediction(test_data)
+test_data_pred = inference_obj.test_data_prediction(test_data,model_name)
+
+
 test_pred_plot = visualizer.test_prediction_plot(
     test_data, test_data_pred, "demand_in_MW"
 )
@@ -218,9 +232,14 @@ with slider_col:
         no_of_hours *= days
 
 # forecasting for users input
-forecast_values = inference_obj.HoltWinterForecast_with_intervals(
-    no_of_hours, confidence_level=0.95
-)
+if model_name=="Holt-Winter":
+    forecast_values = inference_obj.HoltWinterForecast_with_intervals(
+        no_of_hours, confidence_level=0.95
+    )
+else:
+    forecast_values = inference_obj.ProphetForecast_with_intervals(
+        no_of_hours
+    )
 forecast_plot = visualizer.forecast_with_confidence(forecast_values)
 with plot_col:
     with st.spinner("Loading...!!!"):
