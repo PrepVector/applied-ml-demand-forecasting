@@ -42,6 +42,5 @@ class FeatureEngineering:
             return None
 
     # this is a sample function, where you can code your own features
-
     def customized_features(self):
         pass

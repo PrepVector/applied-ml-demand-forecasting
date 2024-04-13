@@ -240,7 +240,7 @@ else:
     forecast_values = inference_obj.ProphetForecast_with_intervals(
         no_of_hours
     )
-forecast_plot = visualizer.forecast_with_confidence(forecast_values)
+forecast_plot = visualizer.forecast_with_confidence(forecast_values,model_name)
 with plot_col:
     with st.spinner("Loading...!!!"):
         st.plotly_chart(forecast_plot)

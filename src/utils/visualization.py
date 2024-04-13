@@ -102,7 +102,7 @@ class Visualizer:
         except Exception as e:
             self.logger.exception("Error while plotting prediction plot", e)
 
-    def forecast_with_confidence(self, forecast_values):
+    def forecast_with_confidence(self, forecast_values,model_name):
         """
         Generate and display a forecast plot with confidence intervals using Plotly Graph Objects.
 
@@ -151,7 +151,7 @@ class Visualizer:
 
             # Update layout
             fig.update_layout(
-                title="Holt-Winters Forecast with Confidence Intervals",
+                title=model_name+" Forecast with Confidence Intervals",
                 xaxis_title="Hours",
                 yaxis_title="Forecasted Value",
             )
