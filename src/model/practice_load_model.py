@@ -15,8 +15,6 @@ class PracticeModelLoader:
 
     """
 
-    logger = ProjectLogger().get_logger()
-
     @staticmethod
     def load_model(file_path):
         """
@@ -37,3 +35,20 @@ class PracticeModelLoader:
         except Exception as e:
             # Log an exception message if an error occurs during loading
             pass
+
+
+# replace with the model path you want
+file_path = 'model.pkl'
+
+# Instantiate a logger
+logger = ProjectLogger().get_logger()
+
+# Instantiate PracticeModelLoader
+model_loader = PracticeModelLoader()
+
+# Load the model
+try:
+    model = model_loader.load_model(file_path)
+    logger.info("Model loaded successfully.")
+except Exception as e:
+    logger.error(f"Error loading the model: {str(e)}")

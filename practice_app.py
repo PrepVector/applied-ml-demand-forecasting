@@ -1,3 +1,11 @@
+# Import necessary modules
+from src.logger import ProjectLogger
+from src.utils.load_file import DataLoader
+from src.utils.seasonal_decompose import SeasonalDecomposer
+from src.utils.visualization import Visualizer
+from src.model.load_model import ModelLoader
+from src.model.inference import ModelInference
+
 class PracticeAppModelInference:
     """
     This class represents a process for model inference in the Practice App.
@@ -40,7 +48,7 @@ class PracticeAppModelInference:
         self.prophet_model_path = prophet_model_path
         self.test_data_path = test_data_path
 
-    def load_models(self):
+    def load_model(self):
         """
         Loads the Holt-Winter and Prophet models from their respective paths.
         """
@@ -63,3 +71,45 @@ class PracticeAppModelInference:
         Prints the predicted values of the test data for both models.
         """
         # Implementation details omitted
+
+
+
+try:
+    # Assuming you have defined logger, model paths, and test data path
+    logger = ProjectLogger().get_logger()
+    holt_winter_model_path = "path/to/holt_winter_model.pkl"
+    prophet_model_path = "path/to/prophet_model.pkl"
+    test_data_path = "path/to/test_data.csv"
+
+    # Instantiate PracticeAppModelInference
+    model_inference = PracticeAppModelInference(logger, holt_winter_model_path, prophet_model_path, test_data_path)
+
+    # Load models
+    try:
+        model_inference.load_models()
+    except Exception as load_models_error:
+        logger.error(f"Error loading models: {load_models_error}")
+
+    # Load test data
+    try:
+        test_data = model_inference.load_test_data()
+    except Exception as load_data_error:
+        logger.error(f"Error loading test data: {load_data_error}")
+
+    # Perform inference
+    try:
+        predictions = model_inference.perform_inference()
+    except Exception as inference_error:
+        logger.error(f"Error performing inference: {inference_error}")
+
+    # Print predictions
+    try:
+        model_inference.print_predictions(predictions)
+    except Exception as print_error:
+        logger.error(f"Error printing predictions: {print_error}")
+
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+
+
+
