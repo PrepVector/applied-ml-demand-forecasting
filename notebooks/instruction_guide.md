@@ -32,7 +32,6 @@ This repository contains two Jupyter notebooks for forecasting energy and sales 
 
 4. **Open the notebooks:**
     - `Energy Demand Forecasting.ipynb`
-    - `Sales Demand Forecasting.ipynb`
 
 5. **Run the notebooks cell by cell to execute the code.**
 
@@ -43,7 +42,7 @@ This repository contains two Jupyter notebooks for forecasting energy and sales 
 
 2. **Upload the notebooks:**
     - Click on `File` > `Upload notebook`.
-    - Select the desired notebook (`Energy Demand Forecasting.ipynb` or `Sales Demand Forecasting.ipynb`).
+    - Select the notebook-`Energy Demand Forecasting.ipynb` .
 
 3. **Execute the notebook:**
     - Run each cell of the notebook to execute the code.
@@ -52,7 +51,5 @@ This repository contains two Jupyter notebooks for forecasting energy and sales 
 
 - The `Energy Demand Forecasting.ipynb` notebook is used for the current project and utilizes univariate time series analysis techniques.
   
-- The `Sales Demand Forecasting.ipynb` notebook is provided for students who want to explore and learn more about multivariate time series modeling techniques.
-
-- For more details about the problem statements and project descriptions, please refer to `Project Description.docx` located in the `docs` folder.
+- For more details, please refer to `PROBLEM STATEMENT.docx` located in the `docs` folder.
 
